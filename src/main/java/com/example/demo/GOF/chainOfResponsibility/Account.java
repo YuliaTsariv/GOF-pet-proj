@@ -1,19 +1,25 @@
 package com.example.demo.GOF.chainOfResponsibility;
 
-import lombok.extern.slf4j.Slf4j;
-
-@Slf4j
 public abstract class Account {
-    private Long balance;
-    private AccountType accountType;
+    private final Priority priority;
+    private Account nextAccount;
 
-    public void handlePayment(Long pay) {
-        if(canPay(pay)){
-            log.info("Handle payment with "+accountType);
+    public Account(Priority priorityLevel) {
+        this.priority = priorityLevel;
+    }
+
+    public void setNextAccount(Account nextAccount) {
+        this.nextAccount = nextAccount;
+    }
+
+    public void processPayment(Long payment, Priority level){
+        if(level.ordinal() == priority.ordinal()){
+            handleProcess(payment);
+        }
+        if(nextAccount != null){
+            nextAccount.processPayment(payment, level);
         }
     }
 
-    private boolean canPay(Long pay) {
-        return balance >= pay;
-    }
+    public abstract void handleProcess(Long payment);
 }
