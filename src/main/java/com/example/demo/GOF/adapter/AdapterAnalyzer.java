@@ -2,6 +2,8 @@ package com.example.demo.GOF.adapter;
 
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
+import org.json.JSONObject;
+import org.json.XML;
 
 @Slf4j
 @Data
@@ -14,7 +16,9 @@ public class AdapterAnalyzer implements JsonDataAnalyzer {
 
     @Override
     public void analyzeData() {
-        log.info("Convert xmlData:{} to data to json ", xmlData);
-        log.info("Analyze data");
+        String xmlString = xmlData.getXmlData();
+        JSONObject jsonObject = XML.toJSONObject(xmlString);
+        String jsonData = jsonObject.toString();
+        log.info("Analyze JSON data: {}", jsonData);
     }
 }

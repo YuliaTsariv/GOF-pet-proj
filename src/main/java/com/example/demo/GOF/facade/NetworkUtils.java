@@ -7,13 +7,13 @@ import java.util.concurrent.TimeUnit;
 
 @Slf4j
 public class NetworkUtils {
-        public void checkNetworkConnection(Network network) {
-            log.info("Checking network {} connection...", network);
-            try {
-                TimeUnit.SECONDS.sleep(2);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            log.info("Network connection is active.");
+    public void checkNetworkConnection(Network network) {
+        log.info("Checking network {} connection...", network);
+        try {
+            TimeUnit.SECONDS.sleep(2);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
+        log.info("Network connection is active.");
+    }
 }

@@ -7,7 +7,7 @@ public class DemoApplication {
 
     public static void main(String[] args) {
 
-        RoomConfigService roomConfigService = new RoomConfigServiceProxy("tsarivka2																", "password1");
+        RoomConfigService roomConfigService = new RoomConfigServiceProxy("tsarivka2", "password1");
 
         try {
             roomConfigService.addRoom("Pink room", 1L);
